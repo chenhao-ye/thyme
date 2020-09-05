@@ -1,0 +1,2 @@
+# thyme
+A zsh theme.
