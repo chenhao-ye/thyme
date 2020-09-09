@@ -108,7 +108,7 @@ fi
 
 local _JOB='%(1j.%F{cyan}[⚙]%f.)'
 local _RET='%(?..%F{red}%?↵%f )'
-local _CLOCK='%F{green}[%*]%f'
+local _CLOCK='%F{green}[%D{%H:%M:%S}]%f'
 local _TIMER=''
 
 if ! [[ "$THYME_NO_TIMER" == "true" ]] ; then
