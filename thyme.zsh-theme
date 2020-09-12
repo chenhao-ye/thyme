@@ -109,7 +109,7 @@ PROMPT="${_NEWLINE}╭─[${_USER}${_HOST}]${_JOB}${_CWD}${_GIT}${_NEWLINE}╰�
 RPROMPT="${_RET}${_TIMER}${_CLOCK}"
 
 function THYME_update {
-	curl https://raw.githubusercontent.com/chenhao-ye/thyme/main/thyme.zsh-theme > $ZSH_CUSTOM/themes/
+	curl https://raw.githubusercontent.com/chenhao-ye/thyme/main/thyme.zsh-theme > $ZSH_CUSTOM/themes/thyme.zsh-theme
 }
 
 }
