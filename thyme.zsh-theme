@@ -43,67 +43,38 @@ local _NEWLINE='
 local _GIT=''
 
 if ! [[ "$THYME_NO_GIT" == "true" ]]; then
-	_GIT='$(git_prompt_info)'
-
 	ZSH_THEME_GIT_PROMPT_PREFIX=" %F{yellow}["
 	ZSH_THEME_GIT_PROMPT_SUFFIX="]%f"
 
 	# from bullet-train:
-	if [ ! -n "${BULLETTRAIN_GIT_DIRTY+1}" ]; then
 	ZSH_THEME_GIT_PROMPT_DIRTY="✘"
-	else
-	ZSH_THEME_GIT_PROMPT_DIRTY=$BULLETTRAIN_GIT_DIRTY
-	fi
-	if [ ! -n "${BULLETTRAIN_GIT_CLEAN+1}" ]; then
 	ZSH_THEME_GIT_PROMPT_CLEAN="✔"
-	else
-	ZSH_THEME_GIT_PROMPT_CLEAN=$BULLETTRAIN_GIT_CLEAN
-	fi
-	if [ ! -n "${BULLETTRAIN_GIT_ADDED+1}" ]; then
 	ZSH_THEME_GIT_PROMPT_ADDED="✚"
-	else
-	ZSH_THEME_GIT_PROMPT_ADDED=$BULLETTRAIN_GIT_ADDED
-	fi
-	if [ ! -n "${BULLETTRAIN_GIT_MODIFIED+1}" ]; then
 	ZSH_THEME_GIT_PROMPT_MODIFIED="✹"
-	else
-	ZSH_THEME_GIT_PROMPT_MODIFIED=$BULLETTRAIN_GIT_MODIFIED
-	fi
-	if [ ! -n "${BULLETTRAIN_GIT_DELETED+1}" ]; then
 	ZSH_THEME_GIT_PROMPT_DELETED="✖"
-	else
-	ZSH_THEME_GIT_PROMPT_DELETED=$BULLETTRAIN_GIT_DELETED
-	fi
-	if [ ! -n "${BULLETTRAIN_GIT_UNTRACKED+1}" ]; then
 	ZSH_THEME_GIT_PROMPT_UNTRACKED="✭"
-	else
-	ZSH_THEME_GIT_PROMPT_UNTRACKED=$BULLETTRAIN_GIT_UNTRACKED
-	fi
-	if [ ! -n "${BULLETTRAIN_GIT_RENAMED+1}" ]; then
 	ZSH_THEME_GIT_PROMPT_RENAMED="➜"
-	else
-	ZSH_THEME_GIT_PROMPT_RENAMED=$BULLETTRAIN_GIT_RENAMED
-	fi
-	if [ ! -n "${BULLETTRAIN_GIT_UNMERGED+1}" ]; then
 	ZSH_THEME_GIT_PROMPT_UNMERGED="═"
-	else
-	ZSH_THEME_GIT_PROMPT_UNMERGED=$BULLETTRAIN_GIT_UNMERGED
-	fi
-	if [ ! -n "${BULLETTRAIN_GIT_AHEAD+1}" ]; then
 	ZSH_THEME_GIT_PROMPT_AHEAD="⬆"
-	else
-	ZSH_THEME_GIT_PROMPT_AHEAD=$BULLETTRAIN_GIT_AHEAD
-	fi
-	if [ ! -n "${BULLETTRAIN_GIT_BEHIND+1}" ]; then
 	ZSH_THEME_GIT_PROMPT_BEHIND="⬇"
-	else
-	ZSH_THEME_GIT_PROMPT_BEHIND=$BULLETTRAIN_GIT_BEHIND
-	fi
-	if [ ! -n "${BULLETTRAIN_GIT_DIVERGED+1}" ]; then
 	ZSH_THEME_GIT_PROMPT_DIVERGED="⬍"
-	else
-	ZSH_THEME_GIT_PROMPT_DIVERGED=$BULLETTRAIN_GIT_PROMPT_DIVERGED
-	fi
+
+	function THYME_git {
+		local _GIT_CURR=$(git_current_branch)
+		if [[ -z $_GIT_CURR ]] ; then return ; fi
+		local _GIT_DIRTY=":$(parse_git_dirty)"
+		local _GIT_STAT=''
+		if ! [[ "$THYME_NO_GIT_STAT" == "true" ]] ; then
+			_GIT_STAT=$(git_prompt_status)
+			if [[ -n $_GIT_STAT ]] ; then
+				_GIT_STAT=":$_GIT_STAT"
+			fi
+		fi
+
+		echo -n $ZSH_THEME_GIT_PROMPT_PREFIX$_GIT_CURR$_GIT_DIRTY$_GIT_STAT$ZSH_THEME_GIT_PROMPT_SUFFIX
+	}
+
+	_GIT='$(THYME_git)'
 fi
 
 local _JOB='%(1j.%F{cyan}[⚙]%f.)'
@@ -136,5 +107,9 @@ fi
 
 PROMPT="${_NEWLINE}╭─[${_USER}${_HOST}]${_JOB}${_CWD}${_GIT}${_NEWLINE}╰─$_PROMPT "
 RPROMPT="${_RET}${_TIMER}${_CLOCK}"
+
+function THYME_update {
+	curl https://raw.githubusercontent.com/chenhao-ye/thyme/main/thyme.zsh-theme > $ZSH_CUSTOM/themes/
+}
 
 }
