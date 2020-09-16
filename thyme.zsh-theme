@@ -83,16 +83,14 @@ local _CLOCK='%F{green}[%D{%H:%M:%S}]%f'
 local _TIMER=''
 
 if ! [[ "$THYME_NO_TIMER" == "true" ]] ; then
-	_TIMER='%F{yellow}$(THYME_timer)%f'
+	_TIMER='%F{yellow}$(THYME_timer $THYME_LASTEXECTIME)%f'
 	# Based on http://stackoverflow.com/a/32164707/3859566
 	function THYME_timer {
-		if [[ -z "$THYME_TIMESTAMP" ]] ; then return ; fi
-
-		local T=$(( $( date +%s ) - ${THYME_TIMESTAMP} ))
-		local D=$((T/60/60/24))
-		local H=$((T/60/60%24))
-		local M=$((T/60%60))
-		local S=$((T%60))
+		if [[ -z "$1" ]] ; then return ; fi
+		local D=$(($1/60/60/24))
+		local H=$(($1/60/60%24))
+		local M=$(($1/60%60))
+		local S=$(($1%60))
 		echo -n '['
 		if [[ $D > 0 ]] ; then printf '%dd' $D; fi
 		if [[ $H > 0 ]] ; then printf '%dh' $H; fi
@@ -102,6 +100,12 @@ if ! [[ "$THYME_NO_TIMER" == "true" ]] ; then
 
 	preexec() {
 		THYME_TIMESTAMP=$(date +%s)
+	}
+
+	precmd() {
+		if [[ -z "$THYME_TIMESTAMP" ]] ; then return ; fi
+		THYME_LASTEXECTIME=$(( $( date +%s ) - ${THYME_TIMESTAMP} ))
+		THYME_TIMESTAMP='' # clear
 	}
 fi
 
