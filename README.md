@@ -22,5 +22,5 @@ Thyme supports two options set via variables:
 To install for zsh:
 
 ```shell
-./install.sh
+zsh ./install.sh
 ```
