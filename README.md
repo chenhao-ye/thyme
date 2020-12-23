@@ -22,7 +22,5 @@ Thyme supports two options set via variables:
 To install for zsh:
 
 ```shell
-# before installment, make sure [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh) has been installed.
-cp thyme.zsh-theme $ZSH_CUSTOM/themes/
-# then set ZSH_THEME to "thyme" in .zshrc
+./install.sh
 ```
