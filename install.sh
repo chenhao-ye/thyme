@@ -1,8 +1,15 @@
-if ! [ -d ~/.oh-my-zsh ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#!/bin/zsh
+
+if ! command -v starship >/dev/null 2>&1 ; then
+    # if brew is available, use brew
+    if command -v starship >/dev/null 2>&1 ; then
+        brew install starship
+    else
+        sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+    fi
 fi
-if [ -z $ZSH_CUSTOM ] || ! [ -d $ZSH_CUSTOM ]; then
-    ZSH_CUSTOM=~/.oh-my-zsh/custom
-fi
-cp thyme.zsh-theme $ZSH_CUSTOM/themes/
-sed -i 's/\(^ZSH_THEME=.*$\)/ZSH_THEME="thyme"/g' ~/.zshrc
+
+mkdir -p "$HOME/.config/starship/"
+cp thyme.toml "$HOME/.config/starship/thyme.toml"
+echo 'export STARSHIP_CONFIG="$HOME/.config/starship/thyme.toml"' >> $HOME/.zshrc
+echo 'eval "$(starship init zsh)"' >> $HOME/.zshrc
