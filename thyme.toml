@@ -1,0 +1,56 @@
+# starship config for thyme
+
+add_newline = true
+format='''$username($hostname) $directory [\[$git_branch(:$git_commit)(:$git_status)(:$git_state)\]](bold yellow)
+$character'''
+right_format = '''($jobs)($status)($cmd_duration)$time'''
+
+[username]
+format = '[\[[$user](bold blue)\]](white)'
+show_always = true
+
+[hostname]
+format = '@[$hostname](bold cyan)'
+
+[character]
+success_symbol = '[❯](bold green)'
+error_symbol = '[❯](bold red)'
+vicmd_symbol = '[❮](bold blue)'
+
+[directory]
+format = '[$path]($style)[$read_only]($read_only_style)'
+truncation_length = 6
+truncate_to_repo = false
+style = 'bold green'
+
+[git_branch]
+format = '[$branch](bold yellow)'
+
+[git_commit]
+format = '[$hash](bold yellow)'
+
+[git_state]
+format = '\([$state($progress_current/$progress_total)](bold yellow)\) '
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]](bold yellow))'
+
+[time]
+format = '[\[$time\]](bold green)'
+disabled = false
+
+[cmd_duration]
+format = '[\[$duration\]](bold yellow)'
+min_time = 1
+show_milliseconds = true
+disabled = false
+
+[status]
+format = '[\[$status(:$common_meaning)(:$signal_name)\]](red)'
+disabled = false
+
+[jobs]
+format = '[\[$symbol(:$number)\]](bold cyan)'
+symbol = '⚙'
+symbol_threshold = 1
+number_threshold = 2
