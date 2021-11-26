@@ -29,11 +29,11 @@ format = '[$branch](yellow)'
 [git_commit]
 format = '[$hash](yellow)'
 
-[git_state]
-format = '\([$state($progress_current/$progress_total)](yellow)\) '
-
 [git_status]
-format = '([\[$all_status$ahead_behind\]](yellow))'
+format = '[$all_status$ahead_behind](yellow)'
+
+[git_state]
+format = '[$state($progress_current/$progress_total)](yellow)'
 
 [line_break]
 disabled = false
