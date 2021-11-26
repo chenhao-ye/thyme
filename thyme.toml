@@ -9,7 +9,7 @@ format = '[$user](blue)'
 show_always = true
 
 [hostname]
-format = '@[$hostname](cyan)'
+format = '[@$hostname](cyan)'
 
 [character]
 success_symbol = '[❯](bold green)'
