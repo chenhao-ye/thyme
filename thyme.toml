@@ -1,15 +1,15 @@
 # starship config for thyme
 
 add_newline = true
-format='''$username($hostname) $directory ([\[$git_branch(:$git_commit)(:$git_status)(:$git_state)\]](bold yellow))$line_break$character'''
+format='''$username($hostname) $directory ([\[$git_branch(:$git_commit)(:$git_status)(:$git_state)\]](yellow))$line_break$character'''
 right_format = '''($jobs)($status)($cmd_duration)$time'''
 
 [username]
-format = '[\[[$user](bold blue)\]](white)'
+format = '[\[[$user](blue)\]](white)'
 show_always = true
 
 [hostname]
-format = '@[$hostname](bold cyan)'
+format = '@[$hostname](cyan)'
 
 [character]
 success_symbol = '[❯](bold green)'
@@ -18,31 +18,32 @@ vicmd_symbol = '[❮](bold blue)'
 
 [directory]
 format = '[$path]($style)[$read_only]($read_only_style)'
+style = 'green'
 truncation_length = 6
 truncate_to_repo = false
-style = 'bold green'
+truncation_symbol = '.../'
 
 [git_branch]
-format = '[$branch](bold yellow)'
+format = '[$branch](yellow)'
 
 [git_commit]
-format = '[$hash](bold yellow)'
+format = '[$hash](yellow)'
 
 [git_state]
-format = '\([$state($progress_current/$progress_total)](bold yellow)\) '
+format = '\([$state($progress_current/$progress_total)](yellow)\) '
 
 [git_status]
-format = '([\[$all_status$ahead_behind\]](bold yellow))'
+format = '([\[$all_status$ahead_behind\]](yellow))'
 
 [line_break]
 disabled = false
 
 [time]
-format = '[\[$time\]](bold green)'
+format = '[\[$time\]](green)'
 disabled = false
 
 [cmd_duration]
-format = '[\[$duration\]](bold yellow)'
+format = '[\[$duration\]](yellow)'
 min_time = 1
 show_milliseconds = true
 disabled = false
@@ -52,7 +53,7 @@ format = '[\[$status(:$common_meaning)(:$signal_name)\]](red)'
 disabled = false
 
 [jobs]
-format = '[\[$symbol(:$number)\]](bold cyan)'
+format = '[\[$symbol(:$number)\]](cyan)'
 symbol = '⚙'
 symbol_threshold = 1
 number_threshold = 2
