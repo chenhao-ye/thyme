@@ -7,7 +7,7 @@ Thyme is a shell theme based on [Starship](https://starship.rs). Compared to an 
 Thyme's prompt shows:
 
 - current time and execution time of the last command
-- return value of the last command if not zero
+- return value of the last command and its meaning (e.g. killed by which signal) if not zero
 - job control status if there is at least one job
 - git info (current branch name, dirty or not, status, etc.) if in a git repository
 
