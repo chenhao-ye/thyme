@@ -1,8 +1,7 @@
 # starship config for thyme
 
 add_newline = true
-format='''$username($hostname) $directory [\[$git_branch(:$git_commit)(:$git_status)(:$git_state)\]](bold yellow)
-$character'''
+format='''$username($hostname) $directory [\[$git_branch(:$git_commit)(:$git_status)(:$git_state)\]](bold yellow)$line_break$character'''
 right_format = '''($jobs)($status)($cmd_duration)$time'''
 
 [username]
@@ -34,6 +33,9 @@ format = '\([$state($progress_current/$progress_total)](bold yellow)\) '
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]](bold yellow))'
+
+[line_break]
+disabled = false
 
 [time]
 format = '[\[$time\]](bold green)'
