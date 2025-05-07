@@ -1,8 +1,8 @@
 # starship config for thyme
 
 add_newline = true
-format='''[\[$username($hostname)\]](white) $directory ([\[$git_branch(:$git_commit)(:$git_status)(:$git_state)\]](yellow))$line_break$character'''
-right_format = '''($jobs)($status)($cmd_duration)$time'''
+format='''[\[$username($hostname)\]](white) $directory ([\[$git_branch(:$git_commit)(:$git_status)(:$git_state)\]](yellow) )($jobs)\[($cmd_duration)$time\]($status)$line_break$character'''
+# right_format = '''($jobs)($status)($cmd_duration)$time'''
 
 [username]
 format = '[$user](blue)'
@@ -39,21 +39,21 @@ format = '[$state($progress_current/$progress_total)](yellow)'
 disabled = false
 
 [time]
-format = '[\[$time\]](green)'
+format = '[$time](bright-green)'
 disabled = false
 
 [cmd_duration]
-format = '[\[$duration\]](yellow)'
+format = '[$duration](cyan)|'
 min_time = 1
 show_milliseconds = true
 disabled = false
 
 [status]
-format = '[\[$status(:$common_meaning)(:$signal_name)\]](red)'
+format = '[{$status(:$common_meaning)(:$signal_name)}](red) '
 disabled = false
 
 [jobs]
-format = '[\[$symbol(:$number)\]](cyan)'
-symbol = '⚙'
+format = '[{$symbol(:$number)}](purple) '
+symbol = '#'
 symbol_threshold = 1
 number_threshold = 2
