@@ -19,7 +19,7 @@ vicmd_symbol = '[❮](bold blue)'
 [directory]
 format = '[$path]($style)[$read_only]($read_only_style)'
 style = 'green'
-truncation_length = 6
+truncation_length = 3
 truncate_to_repo = false
 truncation_symbol = '.../'
 
