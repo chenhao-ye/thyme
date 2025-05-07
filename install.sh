@@ -1,11 +1,11 @@
 #!/bin/zsh
-set -e
+set -eu
 if ! command -v starship >/dev/null 2>&1 ; then
     # if brew is available, use brew
     if command -v starship >/dev/null 2>&1 ; then
         brew install starship
     else
-        curl -sS https://starship.rs/install.sh | sudo sh
+        curl -sS https://starship.rs/install.sh | sudo sh -s -- -y
     fi
 fi
 
