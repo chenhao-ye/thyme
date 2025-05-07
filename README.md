@@ -2,7 +2,7 @@
 
 Thyme is a shell theme based on [Starship](https://starship.rs). Compared to an oh-my-zsh-based theme, a starship-based theme is faster and more portable.
 
-![thyme-screenshot](img/thyme-v3-screenshot.png)
+![thyme-screenshot](img/thyme-v3.1-screenshot.png)
 
 Thyme's prompt shows:
 

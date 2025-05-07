@@ -1,7 +1,7 @@
 # starship config for thyme
 
 add_newline = true
-format='''[\[$username($hostname)\]](white) $directory ([\[$git_branch(:$git_commit)(:$git_status)(:$git_state)\]](yellow) )($jobs)\[($cmd_duration)$time\]($status)$line_break$character'''
+format='''[\[$username($hostname)\]](white) $directory ([\[$git_branch(:$git_commit)(:$git_status)(:$git_state)\]](yellow) )\[($cmd_duration)$time\]($status)($jobs)$line_break$character'''
 # right_format = '''($jobs)($status)($cmd_duration)$time'''
 
 [username]
