@@ -12,9 +12,9 @@ show_always = true
 format = '[@$hostname](cyan)'
 
 [character]
-success_symbol = '[❯](bold green)'
-error_symbol = '[❯](bold red)'
-vicmd_symbol = '[❮](bold blue)'
+success_symbol = '[\$](bold green)'
+error_symbol = '[\$](bold red)'
+vicmd_symbol = '[\$](bold blue)'
 
 [directory]
 format = '[$path]($style)[$read_only]($read_only_style)'
@@ -49,11 +49,11 @@ show_milliseconds = true
 disabled = false
 
 [status]
-format = '[{$status(:$common_meaning)(:$signal_name)}](red) '
+format = ' [{$status(:$common_meaning)(:$signal_name)}](red) '
 disabled = false
 
 [jobs]
-format = '[{$symbol(:$number)}](purple) '
+format = '[{$symbol($number)}](purple) '
 symbol = '#'
 symbol_threshold = 1
 number_threshold = 2
