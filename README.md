@@ -11,20 +11,22 @@ Thyme's prompt shows:
 - job control status if there is at least one job
 - git info (current branch name, dirty or not, status, etc.) if in a git repository
 
-To install for zsh, clone this repo and run
+To install for zsh:
 
 ```shell
-zsh ./install.sh
-```
+THYEME_SRC='https://raw.githubusercontent.com/chenhao-ye/thyme/refs/heads/main/thyme.toml'
 
-OR install without cloning the repo:
-
-```shell
 # install starship; skip if you have starship installed already
 curl -sS https://starship.rs/install.sh | sudo sh -s -- -y
 # copy thyme to the starship directory and enable it
 mkdir -p ~/.config/starship
-curl -LsSf https://raw.githubusercontent.com/chenhao-ye/thyme/refs/heads/main/thyme.toml > ~/.config/starship/thyme.toml
+curl -LsSf "$THYEME_SRC" > ~/.config/starship/thyme.toml
 echo 'export STARSHIP_CONFIG="$HOME/.config/starship/thyme.toml"' >> ~/.zshrc
 echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+```
+
+The default thyme theme use only the left prompt. If you prefer to use right prompt for jobs/exit code/time, replace the first line `THYME_SRC` with the URL of the right-prompt one
+
+```shell
+THYEME_SRC='https://raw.githubusercontent.com/chenhao-ye/thyme/refs/heads/main/thyme_r.toml'
 ```

@@ -1,7 +1,8 @@
-# starship config for thyme
+# starship config for thyme with right prompt
 
 add_newline = true
-format='''[\[$username($hostname)\]](white) $directory ([\[$git_branch(:$git_commit)(:$git_status)(:$git_state)\]](yellow) )\[($cmd_duration)$time\]($status)($jobs)$line_break$character'''
+format='''[\[$username($hostname)\]](white) $directory ([\[$git_branch(:$git_commit)(:$git_status)(:$git_state)\]](yellow))$line_break$character'''
+right_format = '''($jobs)($status)\[($cmd_duration)$time\]'''
 
 [username]
 format = '[$user](blue)'
@@ -48,11 +49,11 @@ show_milliseconds = true
 disabled = false
 
 [status]
-format = ' [{$status(:$common_meaning)(:$signal_name)}](red)'
+format = '[{$status(:$common_meaning)(:$signal_name)}](red) '
 disabled = false
 
 [jobs]
-format = ' [{$symbol($number)}](purple)'
+format = '[{$symbol($number)}](purple) '
 symbol = '#'
 symbol_threshold = 1
 number_threshold = 2
